@@ -19,7 +19,11 @@ const fs = require('file-system');
 
 
 router.post('/api/signup', (request, response) => {
-    if (request.body.email && request.body.password) {
+    var user = data.users.find(user => { return user.email === request.body.email });
+    if (user) {
+        return response.status(400).json({ message: "Email already registered" });
+    }
+    else if (request.body.email && request.body.password) {
         var hashed = crypto.pbkdf2Sync(request.body.password, 'salt', 10, 512, 'sha512').toString('base64');
         var user = {
             email: request.body.email,
@@ -29,23 +33,26 @@ router.post('/api/signup', (request, response) => {
         request.session.isAuthenticated = true;
         var itemsJSON = JSON.stringify(data);
         fs.writeFileSync('data.json', itemsJSON);
-        return response.status(200).json(data);
+        return response.status(200).json({ email: user.email, message: "Success" });
 
     } else {
-        return response.status(400).json({ message: "Failed Signup" });
+        return response.status(400).json({ message: "Missing Data Fields" });
     }
 });
 
 router.post('/api/login', (request, response) => {
     var hashed = crypto.pbkdf2Sync(request.body.password, 'salt', 10, 512, 'sha512').toString('base64');
-    var user = data.users.find(user => { return user.email === request.body.email && user.password === hashed });
+    var userEmail = data.users.find(user => { return user.email === request.body.email });
+    var userPW = data.users.find(user => { return  user.password === hashed });
 
-    if (user) {
+    if (userEmail && userPW) {
         request.session.isAuthenticated = true;
-        return response.status(200).json({ message: "Success" });
+        return response.status(200).json({ message: "Success", data: userEmail.email});
+    } else if(userEmail){
+        return response.status(400).json({ message: "Incorrect password" });
     }
     else {
-        return response.status(400).json({ message: "Failed Login" });
+        return response.status(400).json({ message: "User not found" });
     }
 });
 

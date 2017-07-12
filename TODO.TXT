@@ -1,0 +1,17 @@
+//////////////////// ROUTING /////////////////////
+
+create separate program file that calls listen ??
+
+write function that picks random card index from current array so that game returns random card.
+
+//////////////////////TESTS //////////////////////
+
+finish writing all tests for all routes, have 5 routes done! 5 to go.
+
+////////////////////VIEWS/////////////////////////
+
+all views needed
+
+///////////////////STYLING///////////////////////
+
+all styling needed

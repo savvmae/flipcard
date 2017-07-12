@@ -1,44 +1,8 @@
 {
     "users": [
-        {
-            "email": "sav@sav.com",
-            "password": "stuff"
-        },
-        {
-            "email": "super@super.com",
-            "password": "CBEDYZv07yhtssCQNtnWn4b5xTyiBO8g50i+2BmODZ356dLw9JKm58vwvPAagVStuqnW6wCEhcjDHLBozf6IM0qKtElD2eo/XZPb0n47nL/Dk/bKsg66ZSou0AXlKMPq6amJJcK+kbR/+l90q3QPLQe7/frWFl/26Z/slIxfJeSeHMG96JsEnNUhNBeroJKFI+g1piirF+PM2r9mEZp+poxNzBaMhbk/031AGzcDQGdE491EmsTOcUgiClQ73PSBz1Icdt/t1Z8EldBCKlhAasLMoap03OrkrZmXFOoQO5glWCX2C5DswVI+Y1H3IuJMmSjuU/npRdrc4KKgckhw2rcohU9WzYJc6jcbnE9MITrhrWgN6FPYx62vBnly4dPFnkfvRY75zaTVyJ9Pjogcn27uddvso+ZIVPZBLHMzXS1Wxqnq6qXOPkSPCXe8QhglCrw7xdSQOFWPSnuwy5rhKGi6X3wDwN19Vj7lQbF4xXF/UCZerJCJ4UQnvfZyeusSq9aPsypljX1aNouBVxe4g0w3csqwoHVrqsX4+NkW7DqrIOQvl/TWnZcvEt+/bL88MT9GKIElqJaQrxyNJC+U8qiNVMbDuAkBvz6OkWlBLJj9DepttYV/zQvLTYHUsBpsyEubl2ndV0PJtSaM8qvCYXGM/xGRY5ghRbQccOQnmY0="
-        },
-        {
-            "email": "animals",
-            "password": "bdhOVuGmLOJUTkNqfi6peQ5X0E5RQ5JkMHj5qVx1ZKhbz+YlLjy8IlC8+0SW4c7SojAv0YDw14aD1SzHa0maS36MFQ4++K/O12z+aaskBtJluFifBCwhzcL0N/mp846M7gsrMmBfbHTOTAafW+rFVyEy/GjS+np5trzp06MNQFs8wWfUb8Hr4If4nPlIFcVS9kMgd6uEgZl2Tgscv5lBW2WGw4QIjU1dlfe28zu1Xwi/hvm+Gj99LVTStl83oxF0BqwM7w6BFhMqEtNl1i689lw1lNnv5WrmXUppM0lxNpMZ6kYSCSHB7WvjjkNBZgZlzyt9IZRB8VA0EJ+ibw0Zj32Nc6E3rJ5fa9j0CiiPQqDIOYIK2fTzf4n7EViC1i5KRJf5diQZP0Gn2gXyBlNR46BwXVRTlGf2nH1mf9q0mf5ZilNQ/TsqCQBqBjEiyR1R5R8alGpEtI5gTIS1j4ZNSFgtlFeMgYXTAqxE6QdZ5vAOCPUj8T/RFvAKHjgGwQmgz42wv+t0PIfFyOC6BIjw9K1E1QlHvUvaqDwfHCKWhw4hDWOO9UG1Hk6JCmtkDejp9CDMPAbtUPegCYW9Sj/164+EDbnFrbhFlu4+RFjmxdFoVy79Bowl9cYEXhTHeLTMms6vRIlzrzlf2yD4m+55h8+7RYwkhbb4fHeBGOJgR8A="
-        },
-        {
-            "email": "cats",
-            "password": "agFXakoMdjvf5HZXjfns6/MBqwB8mpgHNM4Fnu1lSfbKh4TLSbA09KfIqoLNyzjbfMOObw5dHTnBoU8fr69EwZqYXzyoPzDB7QauCI1FyXVFXpJL1P0c3jl+ECd7yOzx2c12fMQZuqV/B6DK1bOdBjS7Fi/zF6o+dFPNRPBL1Z5nVThvWdTzpXdC6hUrlxOAbw0JJmk3xB8m+ZHp08HQ9rvh/UTiZleHZ9AfbBx09XZDuuLlKbKoyPzq74c6Bol5PQ6uovGjMEGNI8vDqx2wnfLKG9F78pGNJet8F3VGoTGUhJnbxAdZw/urC2u8xZdlkqJ4e2rEnPmyFUP2Cdvw7cZ8Xetnufc4LGTL2fAUY6fCJ3i/pDkarCK14jrZgVmUzWTa82AiH/xo+6ba0cxM5o4jUZD/YYHuAweUDqi2snvc0Lbar45Dko4LFNsLpUQMFDVY3EYtLbVj1Y92Ys+HraJafFolhzmE/qqGVza/FbIXRAHhnMIFuwB4skCt/59mp5Fg7M/+G83rrhAGkyLumiPgKSrs3anbk46FKiOBs4/lJUTQxR7k2FFGe0rfyOSmoiwCMGO1LMJbzppTcOzNJK0XJokxyK8jHe++JA5C/Rta2blXV6F8j+piY67fR0amTh+i1ZiPmvWM+axvlcEexyK9QT6M6lSgraSUaocnjc8="
-        }
+        
     ],
     "decks": [
-        {
-            "id": 0,
-            "name": "math questions",
-            "cards": [
-                {
-                    "cardId": 0,
-                    "question": "2 + 2",
-                    "answer": "4",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "id": 1,
-            "name": "animals",
-            "cards": []
-        },
-        {
-            "id": 2,
-            "name": "biscuits",
-            "cards": []
-        }
+        
     ]
 }

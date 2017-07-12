@@ -6,8 +6,9 @@ const session = require('express-session');
 const fs = require('fs');
 
 // gets all decks
+// test complete
 router.get('/api/decks', (request, response) => {
-    if (data.decks) {
+    if (data.decks[0] != undefined) {
         var modelStatus = {
             message: "success",
             data: data.decks
@@ -19,6 +20,7 @@ router.get('/api/decks', (request, response) => {
 });
 
 // creates new deck
+// test complete
 router.post('/api/decks', (request, response) => {
 
     if (request.body.name) {
@@ -31,7 +33,7 @@ router.post('/api/decks', (request, response) => {
         data.decks.push(newDeck);
         var itemsJSON = JSON.stringify(data);
         fs.writeFileSync('data.json', itemsJSON);
-        return response.status(200).json({ message: "Sucesss", newDeck });
+        return response.status(200).json({ message: "Success", newDeck });
 
     } else {
 
@@ -41,6 +43,7 @@ router.post('/api/decks', (request, response) => {
 });
 
 // create new card in deck
+// test complete
 router.post('/api/decks/:id', (request, response) => {
     var deckIndex = data.decks.findIndex(q => q.id === parseInt(request.params.id));
 
@@ -54,7 +57,10 @@ router.post('/api/decks/:id', (request, response) => {
         data.decks[deckIndex].cards.push(newCard);
         var itemsJSON = JSON.stringify(data);
         fs.writeFileSync('data.json', itemsJSON);
-        return response.status(200).json({ message: "Sucesss", newCard });
+        return response.status(200).json({ message: "Success", newCard });
+    }
+    else {
+        return response.status(400).json({ message: "Incomplete Data" });
     }
 });
 
@@ -116,6 +122,7 @@ router.delete('/api/decks/:id/:cardId', (request, response) => {
 });
 
 // gets card, starts game, interchange id to get to different cards while in quiz
+// test complete
 router.get('/api/decks/:id', (request, response) => {
 
     var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
