@@ -86,12 +86,12 @@ p {
 	z-index: 2;
 	transform: rotateY(0deg);
     background-color: palevioletred;
-    color: royalblue
+    color: white
 
 }
 
 .back {
 	transform: rotateY(180deg);
     background-color: royalblue;
-    color: palevioletred;
+    color: white;
 }
