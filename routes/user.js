@@ -11,14 +11,20 @@ router.get('/', (request, response) => {
 });
 
 router.get('/api/signup', (request, response) => {
-    return response.render('signup');
+    var model = {
+        message: "You need to signup!"
+    }
+    return response.render('signup', model);
 });
 
 router.post('/api/signup', (request, response) => {
     var user = data.users.find(user => { return user.email === request.body.email });
     if (user) {
         // return response.status(400).json({ message: "Email already registered" });
-        return response.redirect('/');
+        var model = {
+            message: "That email is already registered. Log in to continue."
+        }
+        return response.render('login', model );
     }
     else if (request.body.email && request.body.password) {
         var hashed = crypto.pbkdf2Sync(request.body.password, 'salt', 10, 512, 'sha512').toString('base64');
@@ -59,7 +65,10 @@ router.post('/api/login', (request, response) => {
 
 router.post('/api/logout', (request, response) => {
     request.session.destroy();
-    response.redirect('/');
+    var model = {
+        message: "you have been successfully logged out!"
+    }
+    response.render('login', model);
     // return response.status(200).json({ message: "successfully logged out" });
 });
 

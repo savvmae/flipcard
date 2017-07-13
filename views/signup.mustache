@@ -1,13 +1,22 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="/styles.css">
-    </head>
-    <body>
-        <p>SIGNUP</p>
-        <form method="POST" action="/api/signup">
-            <input type="text" name="email" placeholder="Email:">
-            <input type="password" name="password" placeholder="Password:">
-            <button type="submit">Signup</button>
-        </form>
-    </body>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class='wrapper'>
+    <p class='center center-text-large'>SIGNUP</p>
+    <p class='center center-text-large'>{{message}}</p>
+
+    <form method="POST" action="/api/signup">
+        <div class='form-wrapper-center'>
+            <input class="inputs" type="text" name="email" placeholder="Email:">
+            <input class="inputs" type="password" name="password" placeholder="Password:">
+        </div>
+        <div class='form-wrapper-center'>
+        <button class="buttons" type="submit">Signup</button>
+        </div>
+    </form>
+</body>
+
 </html>

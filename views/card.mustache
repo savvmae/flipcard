@@ -5,32 +5,35 @@
 </head>
 
 <body>
-    <div>
-        <a href="/api/decks">Dashboard</a>
+    <div class="form-wrapper-left">
+        <a class='buttons vertical-center-text' href="/api/decks">Dashboard</a>
     </div>
-    <form method="GET" action="/api/decks/{{deck.id}}/start">
-        <button type="submit">Next</button>
-    </form>
-
-    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-            <div class="front">
-                {{card.question}}
-            </div>
-            <div class="back">
-                {{card.answer}}
+    <div class="form-wrapper-center">
+        <form method="GET" action="/api/decks/{{deck.id}}/start">
+            <button class="buttons" type="submit">Next</button>
+        </form>
+    </div>
+    <div class="form-wrapper-center">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                    {{card.question}}
+                </div>
+                <div class="back">
+                    {{card.answer}}
+                </div>
             </div>
         </div>
     </div>
 
-
-    <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/incorrect">
-        <button type="submit">Answered Incorrectly</button>
-    </form>
-    <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/correct">
-        <button type="submit">Answered Correctly</button>
-    </form>
-
+    <div class="form-wrapper-center">
+        <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/incorrect">
+            <button class="buttons" type="submit">Answered Incorrectly</button>
+        </form>
+        <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/correct">
+            <button class="buttons" type="submit">Answered Correctly</button>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -1,1 +1,59 @@
-{"users":[{"email":"blah","password":"mT3UghYrPgURyZpclzsVfApNoI3K2skdnd9Z+rW8LNHHj4wrjaSGywubiRTAOCADG3AELbjJVwcIvH+NRlANVXlBOHa3FEPkul+SkO0D/wDy8p2VouT5g+R2xIut9+XRvodq/owvJuQULrQX48BYz/kV6QAHE29aZwhVBVl8m8DeyLa+Nj0BOV817WNK6EBMHVxiWhM2HESmL3B7LkK2lZzRA3DNUGoXJBL2KEmMG+c+qzkaIckx8xfrLOh6tlBg8svLN948VliyMVRpwOYoNHdYAucvjsqkLURkJ/rTvnNzYKpd7yMCDNHHYONKgBzsu7eCHd7ngFwSzJgaHiMys9JmDoib/VsuWHHsq4vNBlIyqfCKkWXQ63LShQ8/eOPyC6DFa4prEREaLTdJHjl54MvKXf+HvndA4yT1rWC8xvHoy4oXNFjSXFETs4gK3eD+UuPo4BXzYcwaMeS4YSJM+3ePhGutrGdOwpvsdcJksYBTB0NZXdcMfMlp2nA1MHMzzsbyOW5kmy+uw6a4/aC1QWDGS47uCTGoxbIS+Zp5p4tFXfSThKbGvhAMO6T+cj076Zhmcrgj3K+O+kGwNwse4rVPc+i8rkMPqrNCcLfQVR/83yWdlbekCMeYo86LcYmTLMyL8mYWOahYpMC2ABiRlCwrN3Ft7TtTKHVd+Tx67v0="}],"decks":[{"id":0,"name":"Animals Deck","cards":[{"cardId":0,"question":"more things","answer":"more stuff","correct":true},{"cardId":1,"question":"stuff","answer":"things","correct":true},{"cardId":2,"question":"black","answer":"white","correct":true},{"cardId":3,"question":"orange","answer":"yello","correct":false}]},{"id":1,"name":"animals","cards":[]},{"id":2,"name":"stuff","cards":[]},{"id":3,"name":["stuff","things"],"cards":[{"cardId":0,"question":"whoop","answer":"booboo"}]}]}
+{
+    "users": [
+        {
+            "email": "blah",
+            "password": "mT3UghYrPgURyZpclzsVfApNoI3K2skdnd9Z+rW8LNHHj4wrjaSGywubiRTAOCADG3AELbjJVwcIvH+NRlANVXlBOHa3FEPkul+SkO0D/wDy8p2VouT5g+R2xIut9+XRvodq/owvJuQULrQX48BYz/kV6QAHE29aZwhVBVl8m8DeyLa+Nj0BOV817WNK6EBMHVxiWhM2HESmL3B7LkK2lZzRA3DNUGoXJBL2KEmMG+c+qzkaIckx8xfrLOh6tlBg8svLN948VliyMVRpwOYoNHdYAucvjsqkLURkJ/rTvnNzYKpd7yMCDNHHYONKgBzsu7eCHd7ngFwSzJgaHiMys9JmDoib/VsuWHHsq4vNBlIyqfCKkWXQ63LShQ8/eOPyC6DFa4prEREaLTdJHjl54MvKXf+HvndA4yT1rWC8xvHoy4oXNFjSXFETs4gK3eD+UuPo4BXzYcwaMeS4YSJM+3ePhGutrGdOwpvsdcJksYBTB0NZXdcMfMlp2nA1MHMzzsbyOW5kmy+uw6a4/aC1QWDGS47uCTGoxbIS+Zp5p4tFXfSThKbGvhAMO6T+cj076Zhmcrgj3K+O+kGwNwse4rVPc+i8rkMPqrNCcLfQVR/83yWdlbekCMeYo86LcYmTLMyL8mYWOahYpMC2ABiRlCwrN3Ft7TtTKHVd+Tx67v0="
+        }
+    ],
+    "decks": [
+        {
+            "id": 0,
+            "name": "Animals Deck",
+            "cards": [
+                {
+                    "cardId": 0,
+                    "question": "black",
+                    "answer": "white",
+                    "correct": false
+                },
+                {
+                    "cardId": 1,
+                    "question": "welll",
+                    "answer": "thennn",
+                    "correct": false
+                },
+                {
+                    "cardId": 2,
+                    "question": "need more questions",
+                    "answer": "an answer"
+                },
+                {
+                    "cardId": 3,
+                    "question": "some stuff",
+                    "answer": "and things"
+                },
+                {
+                    "cardId": 4,
+                    "question": "duck duck",
+                    "answer": "goose",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": [
+                "stuff",
+                "things"
+            ],
+            "cards": [
+                {
+                    "cardId": 0,
+                    "question": "whoop",
+                    "answer": "booboo"
+                }
+            ]
+        },
+        
+    ]
+}

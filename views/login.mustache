@@ -1,14 +1,22 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="/styles.css">
-    </head>
-    <body>
-        <p>LOGIN</p>
-        <form method="POST" action="/api/login">
-            <input type="text" name="email" placeholder="Email:">
-            <input type="password" name="password" placeholder="Password:">
-            <button type="submit">Login</button>
-        </form>
-        
-    </body>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class='wrapper'>
+    <p class='center center-text-large'>LOGIN</p>
+    <p class='center center-text-large'>{{message}}</p>
+    <form  method="POST" action="/api/login">
+        <div class='form-wrapper-center'>
+            <input class='inputs' type="text" name="email" placeholder="Email:">
+            <input class='inputs' type="password" name="password" placeholder="Password:">
+        </div>
+        <div class='form-wrapper-center'>
+        <button class='buttons' type="submit">Login</button>
+        </div>
+    </form>
+
+</body>
+
 </html>

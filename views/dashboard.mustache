@@ -5,25 +5,29 @@
 </head>
 
 <body>
-
+    <div class='form-wrapper-left'>
     <form method="POST" action="/api/logout">
-        <button type="submit">Logout</button>
+        <button class="buttons" type="submit">Logout</button>
     </form>
-
+    </div>
+    <p>{{errMessage}}</p>
+    <div class='form-wrapper-center'>
     <form method="POST" action="/api/decks">
-        <input type="text" name="name" placeholder="New Deck Name:">
-        <button type="submit">Add</button>
+        <input class="inputs" type="text" name="name" placeholder="New Deck Name:">
+        <button class="buttons" type="submit">Add</button>
     </form>
+    </div>
 
     {{#data}}
-    <p>{{name}}</p>
+    <div class='form-wrapper-center'>
+    <p class="center-text-large">{{name}}</p>
     <form method="GET" action="/api/decks/{{id}}/start">
-        <button type="submit">Start Quiz</button>
+        <button class="buttons" type="submit">Start Quiz</button>
     </form>
     <form method="GET" action="/api/decks/{{id}}">
-        <button type="submit">Manage Deck</button>
+        <button class="buttons" type="submit">Manage Deck</button>
     </form>
-
+    </div>
     {{/data}}
 </body>
 

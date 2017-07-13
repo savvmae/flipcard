@@ -1,6 +1,6 @@
 //////////////////// ROUTING /////////////////////
 
-write function that picks random card index from current array so that game returns random card.
+routing good!
 
 //////////////////////TESTS //////////////////////
 
@@ -14,4 +14,4 @@ all views good and rendering except the card view, need to write functionality f
 
 ///////////////////STYLING///////////////////////
 
-all styling needed, working on animations.
+all styling good! although very basic

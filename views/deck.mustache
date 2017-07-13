@@ -5,30 +5,40 @@
 </head>
 
 <body>
-    <div>
-        <a href="/api/decks">Dashboard</a>
+    <div class="form-wrapper-left">
+        <a class="buttons vertical-center-text" href="/api/decks">Dashboard</a>
         <form method="POST" action="/api/logout">
-            <button type="submit">Logout</button>
+            <button class="buttons" type="submit">Logout</button>
         </form>
     </div>
-    <p>{{data.name}}</p>
+    <p class="center-text-large">{{data.name}}</p>
+
+    <div class='form-wrapper-center'>
+        <form method="POST" action="/api/decks/{{data.id}}">
+            <input class="inputs" type="text" name="question" placeholder="Question">
+            <input class="inputs" type="text" name="answer" placeholder="Answer">
+    </div>
+    <div class='form-wrapper-center'>
+        <button class="buttons" type="submit">Submit New Card</button>
+        </form>
+    </div>
 
     {{#data.cards}}
-    <form method="POST" action="/api/decks/{{data.id}}/update/{{cardId}}">
-        <input type="text" name="question" value="{{question}}">
-        <input type="text" name="answer" value="{{answer}}">
-        <button type="submit">Update Card</button>
-    </form>
-    <form method="POST" action="/api/decks/{{data.id}}/delete/{{cardId}}">
-        <button type="submit">Delete Card</button>
-    </form>
+    <div class='form-wrapper-center'>
+        <form method="POST" action="/api/decks/{{data.id}}/update/{{cardId}}">
+            <input class="inputs" type="text" name="question" value="{{question}}">
+            <input class="inputs" type="text" name="answer" value="{{answer}}">
+    </div>
+    <div class='form-wrapper-center'>
+        <button class="buttons" type="submit">Update Card</button>
+        </form>
+    
+        <form method="POST" action="/api/decks/{{data.id}}/delete/{{cardId}}">
+            <button class="buttons" type="submit">Delete Card</button>
+        </form>
+    </div>
     {{/data.cards}}
-
-    <form method="POST" action="/api/decks/{{data.id}}">
-        <input type="text" name="question" placeholder="Question">
-        <input type="text" name="answer" placeholder="Answer">
-        <button type="submit">Submit New Card</button>
-    </form>
+    
 
 </body>
 

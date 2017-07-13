@@ -129,7 +129,6 @@ router.post('/api/decks/:id/delete/:cardId', (request, response) => {
         var itemsJSON = JSON.stringify(data);
         fs.writeFile('data.json', itemsJSON);
         // return response.status(200).json(modelStatus);
-        // figure out if any variables are already objects to be passed into this render
         return response.render('deck', currentDeck);
 
     } else {
@@ -159,16 +158,26 @@ router.get('/api/decks/:id', (request, response) => {
 //starts game
 
 router.get('/api/decks/:id/start', (request, response) => {
-   
+
     var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
+
     var deckLength = deck.cards.length;
-    var card = deck.cards[Math.floor(Math.random()*deckLength)];
-    var model = {
-        card: card,
-        deck: deck
+    var card = deck.cards[Math.floor(Math.random() * deckLength)];
+
+    if (deckLength > 0) {
+        var model = {
+            card: card,
+            deck: deck
+        }
+
+        return response.render('card', model);
+    } else {
+        var model = {
+            errMessage: "No cards in this deck yet.",
+            data: data.decks
+        }
+        return response.render('dashboard', model)
     }
-    console.log(model);
-    return response.render('card', model);
 });
 
 
