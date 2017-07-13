@@ -8,26 +8,26 @@
     <div>
         <a href="/api/decks">Dashboard</a>
     </div>
-    <form method="GET" action="/api/decks/{{id}}">
+    <form method="GET" action="/api/decks/{{deck.id}}/start">
         <button type="submit">Next</button>
     </form>
 
     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
             <div class="front">
-                {{question}}
+                {{card.question}}
             </div>
             <div class="back">
-                {{answer}}
+                {{card.answer}}
             </div>
         </div>
     </div>
 
 
-    <form method="POST" action="//api/decks/{{id}}/{{cardId}}/incorrect">
+    <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/incorrect">
         <button type="submit">Answered Incorrectly</button>
     </form>
-    <form method="POST" action="/api/decks/{{id}}/{{cardId}}/correct">
+    <form method="POST" action="/api/decks/{{deck.id}}/{{card.cardId}}/correct">
         <button type="submit">Answered Correctly</button>
     </form>
 

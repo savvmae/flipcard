@@ -34,9 +34,12 @@
 	z-index: 2;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
+    background-color: palevioletred;
+
 }
 
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
+    background-color: royalblue;
 }

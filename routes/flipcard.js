@@ -13,7 +13,6 @@ router.get('/api/decks', (request, response) => {
             data: data.decks
         }
         // return response.status(200).json(modelStatus);
-        console.log(modelStatus);
         return response.render('dashboard', modelStatus);
 
     } else {
@@ -64,7 +63,6 @@ router.post('/api/decks/:id', (request, response) => {
             data: deck
         }
         // return response.status(200).json({ message: "Success", newCard });
-        console.log(currentDeck);
         return response.render('deck', currentDeck)
     }
     else {
@@ -150,7 +148,6 @@ router.get('/api/decks/:id', (request, response) => {
             data: deck
         }
         // return response.status(200).json(modelStatus);
-        console.log(modelStatus);
         return response.render('deck', modelStatus);
 
     } else {
@@ -162,20 +159,16 @@ router.get('/api/decks/:id', (request, response) => {
 //starts game
 
 router.get('/api/decks/:id/start', (request, response) => {
-    //need to write functionality for start game, return random card.
-
+   
     var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
-    if (deck) {
-        var modelStatus = {
-            message: "success",
-            data: deck.cards
-        }
-        return response.status(200).json(modelStatus);
-
-    } else {
-
-        return response.status(400).json({ message: "Deck not found" });
+    var deckLength = deck.cards.length;
+    var card = deck.cards[Math.floor(Math.random()*deckLength)];
+    var model = {
+        card: card,
+        deck: deck
     }
+    console.log(model);
+    return response.render('card', model);
 });
 
 
@@ -186,18 +179,21 @@ router.post('/api/decks/:id/:cardId/correct', (request, response) => {
     var deckIndex = data.decks.findIndex(deck => { return deck.id === parseInt(request.params.id) });
     var cardIndex = data.decks[deckIndex].cards.findIndex(card => { return card.cardId === currentCardId });
     var card = data.decks[deckIndex].cards.find(card => { return card.cardId === currentCardId });
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
 
     if (deckIndex != -1 && cardIndex != -1) {
         data.decks[deckIndex].cards[cardIndex].correct = true;
 
         var modelStatus = {
             message: "success",
-            data: card
+            card: card,
+            deck: deck
         }
 
         var itemsJSON = JSON.stringify(data);
         fs.writeFile('data.json', itemsJSON);
-        return response.status(200).json(modelStatus);
+        // return response.status(200).json(modelStatus);
+        return response.render('card', modelStatus);
 
     } else {
         return response.status(400).json({ message: "Flip Card not found" });
@@ -210,18 +206,20 @@ router.post('/api/decks/:id/:cardId/incorrect', (request, response) => {
     var deckIndex = data.decks.findIndex(deck => { return deck.id === parseInt(request.params.id) });
     var cardIndex = data.decks[deckIndex].cards.findIndex(card => { return card.cardId === currentCardId });
     var card = data.decks[deckIndex].cards.find(card => { return card.cardId === currentCardId });
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
 
     if (deckIndex != -1 && cardIndex != -1) {
         data.decks[deckIndex].cards[cardIndex].correct = false;
 
         var modelStatus = {
             message: "success",
-            data: card
+            card: card,
+            deck: deck
         }
 
         var itemsJSON = JSON.stringify(data);
         fs.writeFile('data.json', itemsJSON);
-        return response.status(200).json(modelStatus);
+        return response.render('card', modelStatus);
 
     } else {
         return response.status(400).json({ message: "Flip Card not found" });
