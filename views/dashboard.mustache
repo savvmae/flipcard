@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <form method="POST" action="/api/logout">
+        <button type="submit">Logout</button>
+    </form>
+
+    <form method="POST" action="/api/decks">
+        <input type="text" name="name" placeholder="New Deck Name:">
+        <button type="submit">Add</button>
+    </form>
+
+    {{#data}}
+    <p>{{name}}</p>
+    <form method="GET" action="/api/decks/{{id}}/start">
+        <button type="submit">Start Quiz</button>
+    </form>
+    <form method="GET" action="/api/decks/{{id}}">
+        <button type="submit">Manage Deck</button>
+    </form>
+
+    {{/data}}
+</body>
+
+</html>

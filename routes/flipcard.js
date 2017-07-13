@@ -6,21 +6,22 @@ const session = require('express-session');
 const fs = require('fs');
 
 // gets all decks
-// test complete
 router.get('/api/decks', (request, response) => {
     if (data.decks[0] != undefined) {
         var modelStatus = {
             message: "success",
             data: data.decks
         }
-        return response.status(200).json(modelStatus);
+        // return response.status(200).json(modelStatus);
+        console.log(modelStatus);
+        return response.render('dashboard', modelStatus);
+
     } else {
         return response.status(400).json({ message: "Route Failed" });
     }
 });
 
 // creates new deck
-// test complete
 router.post('/api/decks', (request, response) => {
 
     if (request.body.name) {
@@ -33,7 +34,8 @@ router.post('/api/decks', (request, response) => {
         data.decks.push(newDeck);
         var itemsJSON = JSON.stringify(data);
         fs.writeFileSync('data.json', itemsJSON);
-        return response.status(200).json({ message: "Success", newDeck });
+        return response.redirect('/api/decks');
+        // return response.status(200).json({ message: "Success", newDeck });
 
     } else {
 
@@ -43,12 +45,13 @@ router.post('/api/decks', (request, response) => {
 });
 
 // create new card in deck
-// test complete
 router.post('/api/decks/:id', (request, response) => {
+
     var deckIndex = data.decks.findIndex(q => q.id === parseInt(request.params.id));
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
 
     if (request.body.question && request.body.answer) {
-    
+
         var newCard = {
             cardId: data.decks[deckIndex].cards.length,
             question: request.body.question,
@@ -57,7 +60,12 @@ router.post('/api/decks/:id', (request, response) => {
         data.decks[deckIndex].cards.push(newCard);
         var itemsJSON = JSON.stringify(data);
         fs.writeFileSync('data.json', itemsJSON);
-        return response.status(200).json({ message: "Success", newCard });
+        var currentDeck = {
+            data: deck
+        }
+        // return response.status(200).json({ message: "Success", newCard });
+        console.log(currentDeck);
+        return response.render('deck', currentDeck)
     }
     else {
         return response.status(400).json({ message: "Incomplete Data" });
@@ -65,10 +73,11 @@ router.post('/api/decks/:id', (request, response) => {
 });
 
 // update card in deck
-router.put('/api/decks/:id/:cardId', (request, response) => {
+router.post('/api/decks/:id/update/:cardId', (request, response) => {
     var currentCardId = parseInt(request.params.cardId);
     var deckIndex = data.decks.findIndex(deck => { return deck.id === parseInt(request.params.id) });
     var cardIndex = data.decks[deckIndex].cards.findIndex(card => { return card.cardId === currentCardId });
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
 
     if (deckIndex != -1 && cardIndex != -1) {
         if (request.body.question && request.body.answer) {
@@ -80,9 +89,13 @@ router.put('/api/decks/:id/:cardId', (request, response) => {
                 message: "success",
                 data: data.decks[deckIndex].cards[cardIndex]
             }
+            var currentDeck = {
+                data: deck
+            }
             var itemsJSON = JSON.stringify(data);
             fs.writeFile('data.json', itemsJSON, function (err) { });
-            return response.status(200).json(modelStatus);
+            // return response.status(200).json(modelStatus);
+            return response.render('deck', currentDeck)
 
         } else {
 
@@ -96,12 +109,13 @@ router.put('/api/decks/:id/:cardId', (request, response) => {
 });
 
 // deletes card from deck
-router.delete('/api/decks/:id/:cardId', (request, response) => {
+router.post('/api/decks/:id/delete/:cardId', (request, response) => {
 
     var currentCardId = parseInt(request.params.cardId);
     var deckIndex = data.decks.findIndex(deck => { return deck.id === parseInt(request.params.id) });
     var cardIndex = data.decks[deckIndex].cards.findIndex(card => { return card.cardId === currentCardId });
     var card = data.decks[deckIndex].cards.find(card => { return card.cardId === currentCardId });
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
 
     if (deckIndex != -1 && cardIndex != -1) {
 
@@ -110,10 +124,15 @@ router.delete('/api/decks/:id/:cardId', (request, response) => {
             message: "success",
             data: card
         }
+        var currentDeck = {
+            data: deck
+        }
 
         var itemsJSON = JSON.stringify(data);
         fs.writeFile('data.json', itemsJSON);
-        return response.status(200).json(modelStatus);
+        // return response.status(200).json(modelStatus);
+        // figure out if any variables are already objects to be passed into this render
+        return response.render('deck', currentDeck);
 
     } else {
         return response.status(400).json({ message: "Flip Card not found" });
@@ -121,9 +140,29 @@ router.delete('/api/decks/:id/:cardId', (request, response) => {
 
 });
 
-// gets card, starts game, interchange id to get to different cards while in quiz
-// test complete
+// gets all cards in deck, for editting
 router.get('/api/decks/:id', (request, response) => {
+
+    var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
+    if (deck) {
+        var modelStatus = {
+            message: "success",
+            data: deck
+        }
+        // return response.status(200).json(modelStatus);
+        console.log(modelStatus);
+        return response.render('deck', modelStatus);
+
+    } else {
+
+        return response.status(400).json({ message: "Deck not found" });
+    }
+});
+
+//starts game
+
+router.get('/api/decks/:id/start', (request, response) => {
+    //need to write functionality for start game, return random card.
 
     var deck = data.decks.find(deck => { return deck.id === parseInt(request.params.id) });
     if (deck) {
@@ -138,7 +177,6 @@ router.get('/api/decks/:id', (request, response) => {
         return response.status(400).json({ message: "Deck not found" });
     }
 });
-
 
 
 // stores whether user answered question correctly or not

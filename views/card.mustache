@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div>
+        <a href="/api/decks">Dashboard</a>
+    </div>
+    <form method="GET" action="/api/decks/{{id}}">
+        <button type="submit">Next</button>
+    </form>
+
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
+            <div class="front">
+                {{question}}
+            </div>
+            <div class="back">
+                {{answer}}
+            </div>
+        </div>
+    </div>
+
+
+    <form method="POST" action="//api/decks/{{id}}/{{cardId}}/incorrect">
+        <button type="submit">Answered Incorrectly</button>
+    </form>
+    <form method="POST" action="/api/decks/{{id}}/{{cardId}}/correct">
+        <button type="submit">Answered Correctly</button>
+    </form>
+
+</body>
+
+</html>

@@ -116,7 +116,7 @@ describe('FlipCardController', () => {
 
     it('should update card in deck', (done) => {
         request(application)
-            .put('/api/decks/0/0')
+            .post('/api/decks/0/update/0')
             .expect(200)
             .send({ question: "What do ducks do?", answer: "Swim" })
             .expect(response => {
@@ -130,7 +130,7 @@ describe('FlipCardController', () => {
 
     it('should fail to update card in deck', (done) => {
         request(application)
-            .put('/api/decks/0/7')
+            .post('/api/decks/0/update/7')
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "Flip Card not found" });
@@ -140,7 +140,7 @@ describe('FlipCardController', () => {
 
     it('should fail to update card in deck', (done) => {
         request(application)
-            .put('/api/decks/0/0')
+            .post('/api/decks/0/update/0')
             .expect(400)
             .send({ question: "What do ducks do?", })
             .expect(response => {
@@ -193,7 +193,7 @@ describe('FlipCardController', () => {
     });
     it('should delete card in deck', (done) => {
         request(application)
-            .delete('/api/decks/0/0')
+            .post('/api/decks/0/delete/0')
             .expect(200)
             .expect(response => {
                 assert.deepEqual(response.body, {
@@ -205,7 +205,7 @@ describe('FlipCardController', () => {
     });
     it('should fail to delete card in deck', (done) => {
         request(application)
-            .delete('/api/decks/0/12')
+            .post('/api/decks/0/delete/12')
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, {
