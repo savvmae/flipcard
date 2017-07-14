@@ -23,7 +23,7 @@ describe("userRouter", function () {
     it("should return successfully", function (done) {
         request(application)
             .post("/api/signup")
-            .send({ email: "test@test", password: crypto.pbkdf2Sync('test', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({ email: "test@test", password: 'test'})
             .expect(200)
             .expect(response => {
                 assert.deepEqual(response.body, { email: "test@test", message: "Success"})
@@ -33,7 +33,7 @@ describe("userRouter", function () {
     it("should return unsuccessfully", function (done) {
         request(application)
             .post("/api/signup")
-            .send({ email: "test@test", password: crypto.pbkdf2Sync('test', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({ email: "test@test", password: 'test'})
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "Email already registered" });
@@ -43,7 +43,7 @@ describe("userRouter", function () {
     it("should return unsuccessfully", function (done) {
         request(application)
             .post("/api/signup")
-            .send({ password: crypto.pbkdf2Sync('test', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({ password: 'test'})
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "Missing Data Fields" });
@@ -53,7 +53,7 @@ describe("userRouter", function () {
  it("should return successfully", function (done) {
         request(application)
             .post("/api/login")
-            .send({  email: "test@test", password: crypto.pbkdf2Sync('test', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({  email: "test@test", password: 'test'})
             .expect(200)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "Success", data: "test@test" });
@@ -63,7 +63,7 @@ describe("userRouter", function () {
  it("should return unsuccessfully", function (done) {
         request(application)
             .post("/api/login")
-            .send({  email: "test@test", password: crypto.pbkdf2Sync('testing', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({  email: "test@test", password: 'testing'})
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "Incorrect password" });
@@ -73,7 +73,7 @@ describe("userRouter", function () {
  it("should return unsuccessfully", function (done) {
         request(application)
             .post("/api/login")
-            .send({  email: "testblahhh@test", password: crypto.pbkdf2Sync('test', 'salt', 10, 512, 'sha512').toString('base64')})
+            .send({  email: "testblahhh@test", password: 'test'.toString('base64')})
             .expect(400)
             .expect(response => {
                 assert.deepEqual(response.body, { message: "User not found" });
